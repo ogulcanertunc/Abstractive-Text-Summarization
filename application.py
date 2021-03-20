@@ -19,8 +19,7 @@ torch.manual_seed(SEED)
 
 sl.title("Abstractive Summarizator by Ogi")
 title = sl.text_area('Enter Your Title Here')
-
-text = sl.text_input('Enter Your Text Here ')
+text = sl.text_area('Enter Your Text Here ')
 
 #===============================================================================================#
 
