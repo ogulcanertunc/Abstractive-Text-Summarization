@@ -60,5 +60,4 @@ sum_text= wrapper.wrap(tokenizer_GPT2.decode(sampling_output[which_output,len(GP
 
 
 if sl.button('Predict'):
-    print("Summary is generating ...")
-    print(sum_text)
+    sl.success(sum_text)
