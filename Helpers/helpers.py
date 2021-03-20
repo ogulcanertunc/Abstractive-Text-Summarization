@@ -1,5 +1,5 @@
 import transformers
-from transformers import GPT2Tokenizer, GPT2DoubleHeadsModel, DistilBertModel, DistilBertTokenizer, BertTokenizer, BertForTokenClassification
+from transformers import GPT2Tokenizer, GPT2DoubleHeadsModel
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk import sent_tokenize
@@ -16,16 +16,7 @@ def get_keywords(text_):
     keywords_string = ','.join(keywords)
     return keywords_string
 
-def tokenizer_ogi():
-    GPT2_config_directory = 'GPT2_dir'
-    print('----loading GPT2 summary generator----')
-    tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_config_directory)
-    special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
-                      'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
-    tokenizer_GPT2.add_special_tokens(special_tokens)
-    GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory)
-    print('----GPT2 summary generator directory is true----')
-    return tokenizer_GPT2,special_tokens, GPT2_generator
+
 
 def sampling_output_func(GPT2_generator,GPT2_input_torch,temperature, greedy_search, top_k, top_p, max_length, min_length, num_return_sequences,do_sample):
     sampling_output = GPT2_generator.generate(

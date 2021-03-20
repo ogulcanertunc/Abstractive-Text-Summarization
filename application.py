@@ -18,8 +18,9 @@ torch.manual_seed(SEED)
 #===============================================================================================#
 
 sl.title("Abstractive Summarizator by Ogi")
-text = sl.text_input('Enter Your Text Here')
 title = sl.text_area('Enter Your Title Here')
+
+text = sl.text_input('Enter Your Text Here ')
 
 #===============================================================================================#
 
@@ -27,8 +28,16 @@ title = sl.text_area('Enter Your Title Here')
 
 #===============================================================================================#
 
+
+
+
 GPT2_config_directory = 'GPT2_dir'
-tokenizer_GPT2,special_tokens, GPT2_generator = tokenizer_ogi()
+tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_config_directory)
+special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
+                  'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
+tokenizer_GPT2.add_special_tokens(special_tokens)
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory)
+
 use_GPU_GPT_generator = False
 list_keywords = get_keywords(text)
 
