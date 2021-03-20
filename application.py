@@ -33,14 +33,15 @@ text = sl.text_area('Enter Your Text Here ')
 # Functions and Models Prepared
 
 #===============================================================================================#
+device = torch.device("cpu")
 
 GPT2_config_directory = 'GPT2_dir'
 tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_config_directory)
 special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
                   'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
 tokenizer_GPT2.add_special_tokens(special_tokens)
-GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory)
 use_GPU_GPT_generator = False
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory)
 def get_keywords(text_):
     some_text = text_
     lowered = some_text.lower()
