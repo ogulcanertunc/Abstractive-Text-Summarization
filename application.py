@@ -42,7 +42,7 @@ special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 
                   'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
 tokenizer_GPT2.add_special_tokens(special_tokens)
 use_GPU_GPT_generator = False
-GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory, from_tf=True)
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory)
 def get_keywords(text_):
     some_text = text_
     lowered = some_text.lower()
