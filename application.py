@@ -17,7 +17,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords
 stop_words = stopwords.words('english')
-from helpers.helpers import *
+from Helpers.helpers import get_keywords,build_model
 #===============================================================================================#
 
 # Streamlit
@@ -35,14 +35,10 @@ text = sl.text_area('Enter Your Text Here ')
 
 #===============================================================================================#
 device = torch.device("cpu")
+tokenizer_GPT2, GPT2_generator,use_GPU_GPT_generator = build_model()
 if use_GPU_GPT_generator:
     GPT2_generator = GPT2_generator.to(device)
     GPT2_input_torch = GPT2_input_torch.to(device)
-
-
-
-tokenizer_GPT2, GPT2_generator,use_GPU_GPT_generator = build_model()
-
 list_keywords = get_keywords(text)
 
 GPT2_input = tokenizer_GPT2.encode('<|startoftext|> ' +title + list_keywords + ' <|summarize|> ')
