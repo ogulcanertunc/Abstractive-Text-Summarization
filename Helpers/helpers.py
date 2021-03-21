@@ -24,5 +24,5 @@ def build_model():
                       'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
     tokenizer_GPT2.add_special_tokens(special_tokens)
     use_GPU_GPT_generator = False
-    GPT2_generator = GPT2DoubleHeadsModel.from_pretrained("Conf_gen")
+    GPT2_generator = GPT2DoubleHeadsModel.from_pretrained("Conf_gen", from_tf = False)
     return tokenizer_GPT2, GPT2_generator, use_GPU_GPT_generator
