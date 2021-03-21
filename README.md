@@ -5,8 +5,7 @@
 </p>
 
 <strong> Here is a demo application of the text summarizer: https://ogisummary.herokuapp.com/ </strong> 
-
-Try it out by inputting a review that you found online, or wrote yourself, and it will clasify the review title, the review, or both with a score between 1-5.
+Try it by entering text that you found online or typed yourself; will perceive and summarize the text title and text.
 
 ## Business Case
 
