@@ -1,5 +1,4 @@
 import nltk
-import tensorflow
 import streamlit as sl
 nltk.download('punkt')
 import torch
