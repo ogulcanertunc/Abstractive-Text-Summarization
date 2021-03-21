@@ -17,38 +17,35 @@ nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords
 stop_words = stopwords.words('english')
-
+from helpers.helpers import *
 #===============================================================================================#
 
 # Streamlit
 
 #===============================================================================================#
 
-sl.title("Abstractive Summarizator by Ogi")
+#sl.title("Abstractive Summarizator by Ogi")
 
-title = sl.text_area('Enter Your Title Here')
-text = sl.text_area('Enter Your Text Here ')
+#title = sl.text_area('Enter Your Title Here')
+#text = sl.text_area('Enter Your Text Here ')
+
+title = "Father of printer"
+text = "Johannes Gutenberg (1398 – 1468) was a German goldsmith and publisher who introduced printing to Europe. His introduction of mechanical movable type printing to Europe started the Printing Revolution and is widely regarded as the most important event of the modern period. It played a key role in the scientific revolution and laid the basis for the modern knowledge-based economy and the spread of learning to the masses. Gutenberg many contributions to printing are: the invention of a process for mass-producing movable type, the use of oil-based ink for printing books, adjustable molds, and the use of a wooden printing press. His truly epochal invention was the combination of these elements into a practical system that allowed the mass production of printed books and was economically viable for printers and readers alike. In Renaissance Europe, the arrival of mechanical movable type printing introduced the era of mass communication which permanently altered the structure of society. The relatively unrestricted circulation of information—including revolutionary ideas—transcended borders, and captured the masses in the Reformation. The sharp increase in literacy broke the monopoly of the literate elite on education and learning and bolstered the emerging middle class."
+
 #===============================================================================================#
 
 # Functions and Models Prepared
 
 #===============================================================================================#
 device = torch.device("cpu")
+if use_GPU_GPT_generator:
+    GPT2_generator = GPT2_generator.to(device)
+    GPT2_input_torch = GPT2_input_torch.to(device)
 
-GPT2_config_directory = 'GPT2_dir'
-tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_config_directory)
-special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
-                  'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
-tokenizer_GPT2.add_special_tokens(special_tokens)
-use_GPU_GPT_generator = False
-GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_config_directory)
-def get_keywords(text_):
-    some_text = text_
-    lowered = some_text.lower()
-    tokens = nltk.tokenize.word_tokenize(lowered)
-    keywords = [keyword for keyword in tokens if keyword.isalpha() and not keyword in stop_words]
-    keywords_string = ','.join(keywords)
-    return keywords_string
+
+
+tokenizer_GPT2, GPT2_generator,use_GPU_GPT_generator = build_model()
+
 list_keywords = get_keywords(text)
 
 GPT2_input = tokenizer_GPT2.encode('<|startoftext|> ' +title + list_keywords + ' <|summarize|> ')
@@ -63,11 +60,6 @@ top_p = 0.8
 max_length = 200
 min_length = 20
 num_return_sequences = 3
-
-
-if use_GPU_GPT_generator:
-    GPT2_generator = GPT2_generator.to(device)
-    GPT2_input_torch = GPT2_input_torch.to(device)
 
 do_sample = not greedy_search
 if do_sample == False:
@@ -85,6 +77,7 @@ sampling_output = GPT2_generator.generate(
         do_sample=do_sample,
         num_return_sequences=num_return_sequences,
         no_repeat_ngram_size=3)
+
 #===============================================================================================#
 # Summary
 #===============================================================================================#
