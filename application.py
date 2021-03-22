@@ -41,10 +41,13 @@ tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_directory)
 special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
                   'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
 tokenizer_GPT2.add_special_tokens(special_tokens)
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_directory)
+
+
+
+
+device = torch.device("cpu")
 use_GPU_GPT_generator = False
-GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_directory, from_tf = False)
-
-
 
 if use_GPU_GPT_generator:
     GPT2_generator = GPT2_generator.to(device)
@@ -53,7 +56,6 @@ list_keywords = get_keywords(text)
 
 GPT2_input = tokenizer_GPT2.encode('<|startoftext|> ' +title + list_keywords + ' <|summarize|> ')
 GPT2_input_torch = torch.tensor(GPT2_input, dtype=torch.long)
-print("the keyword input :")
 wrapper.wrap(tokenizer_GPT2.decode(GPT2_input_torch))
 
 temperature = 1
