@@ -17,7 +17,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords
 stop_words = stopwords.words('english')
-from Helpers.helpers import get_keywords,build_model
+from Helpers.helpers import get_keywords
 #===============================================================================================#
 
 # Streamlit
