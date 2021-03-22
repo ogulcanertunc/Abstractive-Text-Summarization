@@ -35,7 +35,18 @@ text = sl.text_area('Enter Your Text Here ')
 
 #===============================================================================================#
 device = torch.device("cpu")
-tokenizer_GPT2, GPT2_generator,use_GPU_GPT_generator = build_model()
+
+GPT2_directory = 'Models'
+tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_directory)
+special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
+                  'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
+tokenizer_GPT2.add_special_tokens(special_tokens)
+use_GPU_GPT_generator = False
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_directory, from_tf = False)
+return tokenizer_GPT2, GPT2_generator, use_GPU_GPT_generator
+
+
+
 if use_GPU_GPT_generator:
     GPT2_generator = GPT2_generator.to(device)
     GPT2_input_torch = GPT2_input_torch.to(device)
