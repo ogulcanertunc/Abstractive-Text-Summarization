@@ -40,8 +40,8 @@ GPT2_directory = 'Models'
 tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_directory)
 special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
                   'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
-tokenizer_GPT2.add_special_tokens('Models')
-GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(GPT2_directory)
+tokenizer_GPT2.add_special_tokens(special_tokens)
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained('Models')
 
 
 
