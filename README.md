@@ -58,3 +58,37 @@ Medium: https://ertuncogulcan.medium.com/ <br>
 * <strong>Streamlit</strong>
 * <strong>Heroku</strong>
 </details>
+
+## Structure of Notebooks:
+<details>
+<a name="Structure"></a>
+<summary>Show/Hide</summary>
+<br>
+    
+1. Pre-Process
+   * 1.1 Tokenizing
+   * 1.2 Generate Keywords
+   * 1.3 Pre-process for GPT Training
+   - * 1.3.1 Example after pre-process
+   * 1.4 Masking
+   - * 1.4.1 Example after masking
+   * 1.6 Saving processed Dataset as pt (PyTorch file).
+
+2. Train Model with Masked Data and Summary Creation
+   * 2.1 Imports
+   * 2.2 Pre-Trained Model Setup (distilgpt2)
+   * 2.3 Importing Torch files
+   * 2.4 Train a part of train dataset
+   - * 2.4.1 Select a row and masked it
+   - * 2.4.2 Create a Data Loader
+   - * 2.4.3 Learn the shapes of the piece we got from the dataset
+   - * 2.4.4 Create Model
+   - * 2.4.5 Test Run
+   * 2.5 Train
+   * 2.6 Saving the Model and Related Files
+   * 2.7 Generating Summary
+   - * 2.7.1 Determine the Model Directory
+   - * 2.7.2 Assign pre-trained models from the Directory
+   - * 2.7.3 Activate/Deactivate GPU
+   * 2.8 Create a Keywords Maker
+   * 2.9 Text/Data Entry
