@@ -1,7 +1,7 @@
 <h1 align='center'>ABSTRACTIVE SUMMARIZATION WITH GPT2</h1>
 
 <p align="center">
-  <img src="https://github.com/ogulcanertunc/Abstractive-Text-Summarization/blob/main/Images/social-media-1989152_1920.jpg?raw=true" width=600>
+  <img src="./blob/main/Images/social-media-1989152_1920.jpg?raw=true" width=600>
 </p>
 
 <strong> Here is a demo application of the text summarizer: https://ogisummary.herokuapp.com/ </strong> 
@@ -39,7 +39,7 @@ Medium: https://ertuncogulcan.medium.com/ <br>
     * <strong>[ Data ](https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/pt_files)</strong>: You can find the pre-processing datasets in pt format here.
 * <strong>(https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/GPT2_dir)</strong>: training outputs.
 * <strong>(https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/Notebooks)</strong>: notebooks for those who want to work on
-* <strong>(https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/Presentation)</strong>: Project Presentation
+* <strong>(./tree/main/Notebooks)</strong>: Project Presentation
 
 </details>
 
