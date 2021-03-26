@@ -1,7 +1,7 @@
 <h1 align='center'>ABSTRACTIVE SUMMARIZATION WITH GPT2</h1>
 
 <p align="center">
-  <img src="./blob/main/Images/social-media-1989152_1920.jpg?raw=true" width=600>
+  <img src="https://github.com/ogulcanertunc/Abstractive-Text-Summarization/blob/main/Images/social-media-1989152_1920.jpg?raw=true" width=600>
 </p>
 
 <strong> Here is a demo application of the text summarizer: https://ogisummary.herokuapp.com/ </strong> 
