@@ -26,8 +26,8 @@ from Helpers.helpers import get_keywords
 
 sl.title("Abstractive Summarizator by Ogi")
 
-title = sl.text_area('Enter Your Title Here')
-text = sl.text_area('Enter Your Text Here ')
+title = sl.text_input('Enter Your Title Here')
+text = sl.text_input('Enter Your Text Here ')
 
 #===============================================================================================#
 
@@ -38,25 +38,22 @@ device = torch.device("cpu")
 
 GPT2_directory = 'Models'
 tokenizer_GPT2 = GPT2Tokenizer.from_pretrained(GPT2_directory)
-special_tokens = {'bos_token': '<|startoftext|>', 'eos_token': '<|endoftext|>', 'pad_token': '<pad>',
-                  'additional_special_tokens': ['<|keyword|>', '<|summarize|>']}
+special_tokens = {'bos_token':'<|startoftext|>','eos_token':'<|endoftext|>','pad_token':'<pad>','additional_special_tokens':['<|keyword|>','<|summarize|>']}
 tokenizer_GPT2.add_special_tokens(special_tokens)
-GPT2_generator = GPT2DoubleHeadsModel.from_pretrained('Models')
-
-
+GPT2_generator = GPT2DoubleHeadsModel.from_pretrained(
+                  GPT2_directory)
 
 
 device = torch.device("cpu")
 use_GPU_GPT_generator = False
-
 if use_GPU_GPT_generator:
-    GPT2_generator = GPT2_generator.to(device)
-    GPT2_input_torch = GPT2_input_torch.to(device)
+  GPT2_generator = GPT2_generator.to(device)
+  GPT2_input_torch = GPT2_input_torch.to(device)
+
 list_keywords = get_keywords(text)
 
 GPT2_input = tokenizer_GPT2.encode('<|startoftext|> ' +title + list_keywords + ' <|summarize|> ')
 GPT2_input_torch = torch.tensor(GPT2_input, dtype=torch.long)
-wrapper.wrap(tokenizer_GPT2.decode(GPT2_input_torch))
 
 temperature = 1
 greedy_search = False
@@ -86,10 +83,9 @@ sampling_output = GPT2_generator.generate(
 #===============================================================================================#
 # Summary
 #===============================================================================================#
+#which_output = sl.number_input('Which Summary', min_value=0, max_value=2, value=2)
 which_output = 2
-sum_text= wrapper.wrap(tokenizer_GPT2.decode(sampling_output[which_output,len(GPT2_input_torch):],
-    skip_special_tokens=True)[:5000])
-
-
-if sl.button('Predict'):
-    sl.success(sum_text)
+if sl.button('Generate Summary'):
+    generated_text = wrapper.wrap(tokenizer_GPT2.decode(sampling_output[which_output,len(GPT2_input_torch):],skip_special_tokens=True)[:5000])
+    #listToStr = ' '.join(map(str, generated_text))
+    sl.write(generated_text)
