@@ -204,14 +204,21 @@ Project Link: [https://github.com/ogulcanertunc/Abstractive-Text-Summarization](
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/ogulcanertunc/Abstractive-Text-Summarization.svg?style=for-the-badge
 [contributors-url]: https://github.com/ogulcanertunc/Abstractive-Text-Summarization/graphs/contributors
+
 [forks-shield]: https://img.shields.io/github/forks/ogulcanertunc/Abstractive-Text-Summarization.svg?style=for-the-badge
 [forks-url]: https://github.com/ogulcanertunc/Abstractive-Text-Summarization/network/members 
+
 [stars-shield]: https://img.shields.io/github/stars/ogulcanertunc/Abstractive-Text-Summarization.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/ogulcanertunc/Abstractive-Text-Summarization/stargazers
+
 [license-shield]: https://img.shields.io/github/license/oogulcanertunc/Abstractive-Text-Summarization.svg?style=for-the-badge
 [license-url]: https://github.com/ogulcanertunc/Abstractive-Text-Summarization/blob/main/LICENSE.txt
+
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ogulcanertunc
+
+
 [product-screenshot]: images/project_steps.png
 [methodology-road]: images/project_steps.png
 [model-arch]: images/model_arch.png
