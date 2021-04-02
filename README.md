@@ -104,7 +104,7 @@ First, download the required dataset and preprocess it, then save your torch fil
 ## Roadmap
 
 ### Methodology
-[![methodology Road][product-screenshot]]
+[![methodology Road][methodology-road]]
  * <strong>Overview of Summarization;</strong> In our project, we will first discuss the types and methods of summarizing.
  * <strong>Using NLP to Summarize Tasks;</strong> Everything we do to create a summary is considered in terms of NLP. 
  * <strong>Generative Pre-Trained Transformer;</strong> Enabling the creation of summaries using the productivity of the gpt-2. 
@@ -219,7 +219,6 @@ Project Link: [https://github.com/ogulcanertunc/Abstractive-Text-Summarization](
 [linkedin-url]: https://linkedin.com/in/ogulcanertunc
 
 
-[product-screenshot]: images/project_steps.png
 [methodology-road]: images/project_steps.png
 [model-arch]: images/model_arch.png
 [analysis]: images/analysis.png
