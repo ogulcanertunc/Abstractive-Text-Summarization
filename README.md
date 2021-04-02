@@ -78,7 +78,7 @@ This section should list any major frameworks that you built your project using.
 ## File Descriptions
 
 * <strong>[ Data ](https://www.kaggle.com/sunnysai12345/news-summary)</strong>: I found the dataset I used in the project here.
-    * <strong>[ Data ](https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/pt_files)</strong>: You can find the pre-processing datasets in pt format here.
+    * <strong>[ Data ](https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/Models)</strong>: You can find the pre-processing datasets in pt format here.
 
 * <strong>[Training Outputs](https://github.com/ogulcanertunc/Abstractive-Text-Summarization/tree/main/Models) </strong>
 
